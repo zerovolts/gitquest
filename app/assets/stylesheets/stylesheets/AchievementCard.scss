@@ -1,0 +1,29 @@
+.achievement-card {
+  @include block(color(light, light), color(light, dark));
+  position: relative;
+  height: 15em;
+  z-index: -1;
+}
+
+.achievement-card-available {
+  @include block(color(light), color(light, dark));
+  position: relative;
+  height: 15em;
+}
+
+.achievement-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.achievement-description {
+  color: color(mid);
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.achievement-unowned {
+  filter: contrast(0.5) blur(1px);
+}

@@ -1,0 +1,19 @@
+@mixin progress-bar($color-name) {
+  border-radius: $block-radius;
+  margin: 1em 0em;
+  height: 1em;
+  background: $black;
+  > span {
+    background: color($color-name);
+    border-radius: $block-radius;
+    box-shadow: 0em $block-depth color($color-name, dark);
+    position: relative;
+    bottom: $block-depth;
+    display: block;
+    height: 100%;
+  }
+}
+
+.progress-bar-red {
+  @include progress-bar(red);
+}

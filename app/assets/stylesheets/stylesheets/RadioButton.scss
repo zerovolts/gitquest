@@ -1,0 +1,57 @@
+// trying to center the whole element, not working
+.radio-horizontal {
+  //margin: auto;
+  user-select: none;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.radio-horizontal > label {
+  border-left: 1px solid $white-shadow;
+}
+
+.radio-horizontal > label:first-of-type {
+  border-radius: $block-radius 0em 0em $block-radius;
+  border-left: none;
+}
+
+.radio-horizontal > label:last-of-type {
+  border-radius: 0em $block-radius $block-radius 0em;
+}
+
+input[type="radio"] + label {
+  cursor: pointer;
+  position: relative;
+  background: $off-white;
+  box-shadow: 0em $block-depth $white-shadow;
+  color: $black;
+  font-family: 'Quando';
+  font-weight: bold;
+  font-size: 1em;
+  padding: 1em 2em;
+  bottom: $block-depth;
+  margin: 0em;
+  transition: bottom 0.2s, box-shadow 0.2s, color 0.2s;
+
+  // testing
+  //width: 170px;
+  //text-align: center;
+}
+
+input[type="radio"]:checked + label {
+  background: $off-white;
+  color: #3498db;
+  box-shadow: none;
+  bottom: 0em;
+}
+
+input[type="radio"]:checked + label:not(:last-of-type) {
+  border-right: 1px solid $white-shadow;
+}
+
+// remove dark line on the left side of the next button of the one pressed
+input[type="radio"]:checked + label + input + label {
+  border-left: none;
+}

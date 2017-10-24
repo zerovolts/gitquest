@@ -1,0 +1,17 @@
+.language-table {
+  border: none;
+  border-collapse: collapse;
+}
+
+.language-tbody {
+  border: none;
+}
+
+.language-tr {
+  border-bottom: 1px solid color(light);
+}
+
+.language-tr:nth-child(even) {
+  background-color: color(light, light);
+  border-bottom: 1px solid color(light);
+}

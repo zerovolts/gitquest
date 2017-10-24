@@ -1,0 +1,31 @@
+.content-card {
+  @include block(color(light, light), color(light, dark));
+  position: relative;
+  height: 15em;
+}
+
+.repo-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.repo-description {
+  color: color(mid);
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.programming-language {
+  font-weight: bold;
+  position: absolute;
+  bottom: 0.8em;
+}
+
+.repo-value {
+  color: color(dark);
+  position: absolute;
+  bottom: 0.8em;
+  right: 0.8em;
+}

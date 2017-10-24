@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Quando');
+
+$block-depth: 0.25em;
+$block-radius: 0.3em;
+
+@mixin block($color, $shadow-color) {
+  background: $color;
+  box-shadow: 0px 4px $shadow-color;
+  border-radius: $block-radius;
+  margin: 1em;
+  padding: 1em;
+}
+
+body {
+  background: color(light);
+  color: color(dark, dark);
+  font-family: 'Quando';
+  //user-select: none;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Quando';
+}
+
+.profile {
+  @include block(color(light, light), color(light, dark));
+}
+
+.content {
+  @include block(color(light, light), color(light, dark));
+  padding: 1em;
+}
+
+.profile-pic {
+  border-radius: $block-radius;
+  margin-bottom: 1em;
+}
+
+.bio {
+  margin-top: 2em;
+}
+
+.tab-bar {
+  @include block(color(light, light), color(light, dark));
+  margin: 1em;
+}
+
+.nav-bar {
+  background: color(dark, mid);
+  box-shadow: 0px 4px color(dark, dark);
+  color: color(light, light);
+  top: 0px;
+  left: 0px;
+  width: 100%;
+}
+
+#title a, #title a:hover, #title a:visited {
+  color: color(light, light);
+}
+
+#title {
+  color: color(light, light);
+  margin: 0.5em 16px;
+  font-size: 1.5em;
+}
+
+hr {
+  border-color: color(light, dark);
+  margin: 0.5em;
+}
+
+.footer {
+  padding-bottom: 0.6em;
+  font-size: 0.8em;
+  text-align: center;
+  //background: color(dark, mid);
+  color: color(dark);
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+}
+
+.social-icon {
+  padding: 0em 0.2em;
+}
+
+.language-title {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
