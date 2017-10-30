@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, withRouter } from "react-router-dom"
+import { Link, Redirect, withRouter } from "react-router-dom"
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -9,6 +9,8 @@ class NavBar extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.signOut = this.signOut.bind(this)
+    this.signIn = this.signIn.bind(this)
   }
 
   handleChange(event) {
@@ -17,7 +19,37 @@ class NavBar extends React.Component {
     })
   }
 
+  signIn() {
+    window.location.replace("/auth/github")
+    //this.props.history.push("/auth/github")
+  }
+
+  signOut() {
+    window.location.replace("/signout")
+    //this.props.history.push("/signout")
+  }
+
   render() {
+    let userDropdown
+    if (this.props.currentUser) {
+      console.log(this.props.currentUser)
+      userDropdown = (
+        <div>
+          <img
+            src={this.props.currentUser.avatar_url}
+            className="nav-avatar">
+          </img>
+          {this.props.currentUser.name}
+          <a href="/signout">Sign out</a>
+        </div>
+      )
+    } else {
+      userDropdown = (
+        <a href="/auth/github">Sign in</a>
+      )
+    }
+    //<button onClick={this.signOut}>Sign out</button>
+
     return (
       <div className="nav-bar">
         <div className="grid-x">
@@ -33,6 +65,9 @@ class NavBar extends React.Component {
                 this.props.history.push('/' + this.state.searchString)
               }
             }}>Fetch</button>
+          </div>
+          <div className="large-2 large-offset-2 cell">
+            {userDropdown}
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ query User($login: String!) {
     bio
     url
     avatarUrl
-    repositories(last: 30) {
+    repositories(last: 50) {
       nodes {
         id
         name
