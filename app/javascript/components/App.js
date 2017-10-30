@@ -31,13 +31,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="app">
         <NavBar
           fetchData={this.fetchData}
           currentUser={this.state.currentUser}
         />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" render={props =>
+            <Home currentUser={this.state.currentUser} />
+          } />
           <Route path="/:login" component={UserPage} />
         </Switch>
         <Footer />
@@ -45,5 +47,5 @@ class App extends React.Component {
     )
   }
 }
-
+//<Route exact path="/" component={Home} />
 export default App;

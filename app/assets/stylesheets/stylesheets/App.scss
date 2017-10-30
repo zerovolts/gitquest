@@ -11,6 +11,10 @@ $block-radius: 0.3em;
   padding: 1em;
 }
 
+//html, body, #react, .app, .grid-x, .cell {
+//  height: 100%;
+//}
+
 body {
   background: color(light);
   color: color(dark, dark);
@@ -29,6 +33,7 @@ h1, h2, h3, h4, h5 {
 .content {
   @include block(color(light, light), color(light, dark));
   padding: 1em;
+  text-align: center;
 }
 
 .profile-pic {
@@ -52,6 +57,10 @@ h1, h2, h3, h4, h5 {
   top: 0px;
   left: 0px;
   width: 100%;
+}
+
+a, a:hover {
+  color: color(light, light);
 }
 
 #title a, #title a:hover, #title a:visited {
@@ -90,8 +99,59 @@ hr {
 }
 
 .nav-avatar {
-  width: 48px;
-  border-radius: 50%;
-  border: 1px solid color(dark, dark);
-  margin-right: 0.5em;
+  width: 32px;
+  border-radius: $block-radius;
+  //border: 1px solid color(dark, dark);
+  margin-right: 0.4em;
+}
+
+.user-dropdown {
+  position: absolute;
+  background: color(dark);
+  top: 60px;
+  left: (100% / 12) * 9;
+  z-index: 999;
+  width: (100% / 12) * 2;
+  //padding: 0.5em;
+  border-radius: 0 0 $block-radius $block-radius;
+  box-shadow: 0px $block-depth color(dark, dark);
+}
+
+.user-dropdown-selection {
+  border-top: 1px solid color(dark, dark);
+  padding: 0.5em;
+}
+
+a:hover .user-dropdown-selection {
+  background: color(dark, dark);
+}
+
+.dropdown-button {
+  cursor: pointer;
+  border-radius: $block-radius;
+  margin-left: 0.5em;
+  padding: 4px 10px;
+  background: color(dark);
+  float: right;
+}
+
+.user-block {
+  margin-top: 10px;
+  padding: 4px;
+  background: color(dark, dark);
+  border-radius: $block-radius;
+}
+
+.sign-in-block {
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 8px;
+  text-align: center;
+  background: color(dark, dark);
+  border-radius: $block-radius;
+}
+
+.search-bar input[type=text] {
+  margin: 0;
+  margin-top: 13px;
 }
