@@ -10,16 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024214024) do
+ActiveRecord::Schema.define(version: 20171031002236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "achievement_ownerships", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "achievement_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_id"], name: "index_achievement_ownerships_on_achievement_id"
+    t.index ["user_id"], name: "index_achievement_ownerships_on_user_id"
+  end
+
+  create_table "achievements", force: :cascade do |t|
+    t.string "slug", null: false
+    t.string "name", null: false
+    t.text "description", null: false
+    t.integer "value", null: false
+    t.string "language"
+    t.string "icon_url"
+    t.integer "owner_count", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_achievements_on_slug", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider"
     t.string "uid"
-    t.string "name"
     t.string "login"
+    t.string "name"
     t.string "email"
     t.string "github_url"
     t.string "location"
@@ -31,6 +53,9 @@ ActiveRecord::Schema.define(version: 20171024214024) do
     t.boolean "hireable"
     t.datetime "github_created_at"
     t.datetime "github_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["login"], name: "index_users_on_login", unique: true
   end
 
 end

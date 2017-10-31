@@ -7,9 +7,13 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get "user", to: "api#user"
+      resources :achievements, only: [:index]
+      get "/users/:login/achievements" => "achievements#show"
+      get "user" => "api#user"
+
+      get "*path" => "api#error"
     end
   end
 
-  get "*path", to: "static_pages#index"
+  get "*path" => "static_pages#index"
 end

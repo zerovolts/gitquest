@@ -1,8 +1,11 @@
 class User < ApplicationRecord
+  has_many :achievement_ownerships
+  has_many :achievements, through: :achievement_ownerships
+
   def self.create_with_omniauth(auth)
     info = auth["extra"]["raw_info"]
-    
-    create! do |user|
+
+    new_user = create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
 
@@ -20,5 +23,13 @@ class User < ApplicationRecord
       user.github_created_at = info["created_at"]
       user.github_updated_at = info["updated_at"]
     end
+
+    new_user.recalculate_achievements
+    new_user
+  end
+
+  def recalculate_achievements
+    #TODO: actually calculate achievements
+    Achievement.find_by(slug: "join-gitquest").grant(self)
   end
 end

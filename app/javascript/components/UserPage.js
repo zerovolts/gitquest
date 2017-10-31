@@ -77,8 +77,14 @@ class UserPage extends React.Component {
           <TabGroup
             tabs={tabs}
             currentTab={this.currentTab}
-            switchTab={this.switchTab} />
-          <ContentArea currentTab={this.state.currentTab} repos={this.state.repos} stats={this.state.stats} />
+            switchTab={this.switchTab}
+          />
+          <ContentArea
+            currentTab={this.state.currentTab}
+            repos={this.state.repos}
+            stats={this.state.stats}
+            login={this.state.login}
+          />
         </div>
       </div>
     )

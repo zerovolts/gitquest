@@ -16,7 +16,7 @@ const ContentArea = props => {
     case "Network":
       return <BlockItem name="" body="" />
     case "Achievements":
-      return <AchievementList />
+      return <AchievementList login={props.login} />
   }
 }
 
