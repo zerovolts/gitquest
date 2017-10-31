@@ -5,8 +5,8 @@
 
 
 Achievement.create(
-  name: "Join GitQuest",
-  slug: "join-gitquest",
+  name: "Hello World!",
+  slug: "hello-world",
   description: "Create an account on GitQuest.io",
   value: 1)
 
@@ -15,6 +15,12 @@ Achievement.create(
   slug: "first-repo",
   description: "Create your first repository.",
   value: 1)
+
+Achievement.create(
+  name: "20 Repos!",
+  slug: "20-repos",
+  description: "Create 20 repositories.",
+  value: 5)
 
 Achievement.create(
   name: "5 Stars",

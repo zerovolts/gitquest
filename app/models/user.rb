@@ -29,7 +29,17 @@ class User < ApplicationRecord
   end
 
   def recalculate_achievements
-    #TODO: actually calculate achievements
-    Achievement.find_by(slug: "join-gitquest").grant(self)
+    new_achievements = Achievement.unsynchronized(self)
+    new_achievements.each do |achievement_slug|
+      Achievement.grant(achievement_slug, self)
+    end
+  end
+
+  def available_achievements
+    Achievement.all.select do |achievement|
+      self.achievements.none? do |owned_achievement|
+        owned_achievement.id == achievement.id
+      end
+    end
   end
 end
