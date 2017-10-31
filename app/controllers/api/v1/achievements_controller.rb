@@ -7,21 +7,16 @@ class Api::V1::AchievementsController < ApplicationController
   def show
     achievements = Achievement.all
     user = User.find_by(login: params[:login])
-    user_achievements = []
+    owned_achievements = []
     available_achievements = achievements
 
     if user
-      user_achievements = user.achievements
-
-      available_achievements = achievements.select do |achievement|
-        user_achievements.none? do |user_achievement|
-          user_achievement.id == achievement.id
-        end
-      end
+      owned_achievements = user.achievements
+      available_achievements = user.available_achievements
     end
 
     render json: {
-      owned: user_achievements,
+      owned: owned_achievements,
       available: available_achievements
     }
   end

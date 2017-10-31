@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20171031002236) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["achievement_id"], name: "index_achievement_ownerships_on_achievement_id"
+    t.index ["user_id", "achievement_id"], name: "index_achievement_ownerships_on_user_id_and_achievement_id", unique: true
     t.index ["user_id"], name: "index_achievement_ownerships_on_user_id"
   end
 
