@@ -95,14 +95,4 @@ class NavBar extends React.Component {
   }
 }
 
-/*
-<div className="search-bar large-1 cell">
-  <button onClick={() => {
-    if (this.state.searchString) {
-      this.props.history.push('/' + this.state.searchString)
-    }
-  }}>Fetch</button>
-</div>
-*/
-
 export default withRouter(NavBar)

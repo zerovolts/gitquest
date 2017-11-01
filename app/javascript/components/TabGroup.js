@@ -7,6 +7,7 @@ const TabGroup = props => (
         <input
           type="radio"
           name="section"
+          defaultChecked={tabName == props.currentTab}
           id={tabName}
           key={tabName + "-input"}
           onClick={() => props.switchTab(tabName)} />,

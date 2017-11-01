@@ -40,7 +40,7 @@ class App extends React.Component {
           <Route exact path="/" render={props =>
             <Home currentUser={this.state.currentUser} />
           } />
-          <Route path="/:login" component={UserPage} />
+          <Route exact path="/:login" component={UserPage} />
         </Switch>
         <Footer />
       </div>

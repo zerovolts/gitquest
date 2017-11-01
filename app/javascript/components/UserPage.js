@@ -68,6 +68,9 @@ class UserPage extends React.Component {
   }
 
   render() {
+    //const params = new URLSearchParams(this.props.location.search)
+    //const tab = params.get("tab")
+
     return (
       <div className="grid-x">
         <div className="small-full medium-4 large-offset-1 large-3 cell">
@@ -76,7 +79,7 @@ class UserPage extends React.Component {
         <div className="small-full medium-8 large-7 cell">
           <TabGroup
             tabs={tabs}
-            currentTab={this.currentTab}
+            currentTab={this.state.currentTab}
             switchTab={this.switchTab}
           />
           <ContentArea
