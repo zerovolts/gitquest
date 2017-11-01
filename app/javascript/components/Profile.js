@@ -1,5 +1,6 @@
-import React from 'react'
-import generateTitle from '../helpers/language_titles'
+import React from "react"
+
+import generateTitle from "../helpers/language-titles"
 
 const defaultProfile = {
   name: "Anonymous",

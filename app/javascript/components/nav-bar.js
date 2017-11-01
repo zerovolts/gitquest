@@ -1,6 +1,7 @@
-import React from 'react'
+import React from "react"
 import { Link, Redirect, withRouter } from "react-router-dom"
-import UserDropdown from "./UserDropdown"
+
+import UserDropdown from "./user-dropdown"
 
 class NavBar extends React.Component {
   constructor(props) {

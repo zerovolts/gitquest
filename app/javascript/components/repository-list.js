@@ -1,6 +1,7 @@
-import React from 'react'
-import BlockItem from './BlockItem'
-import RepositoryBlock from './RepositoryBlock'
+import React from "react"
+
+import BlockItem from "./block-item"
+import RepositoryBlock from "./repository-block"
 
 const RepositoryList = props => {
   if (props.repos) {

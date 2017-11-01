@@ -1,6 +1,7 @@
-import React from 'react'
-import BlockItem from './BlockItem'
-import AchievementBlock from './AchievementBlock'
+import React from "react"
+
+import BlockItem from "./block-item"
+import AchievementBlock from "./achievement-block"
 
 const blankAvailable = Array(9).fill(0).map((_, i) => { return {
   id: i,

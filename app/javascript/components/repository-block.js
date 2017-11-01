@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react"
 
 const RepositoryBlock = props => {
   let primaryLanguage = null
   let primaryColor = "white"
-  
+
   if (props.repo.primaryLanguage) {
     primaryColor = props.repo.primaryLanguage.color
     primaryLanguage = (

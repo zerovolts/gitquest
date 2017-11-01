@@ -4,21 +4,18 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 //
-// To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
+// To reference this file, add <%= javascript_pack_tag "application" %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-//import './main.scss'
-import 'babel-polyfill'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
-import App from '../components/App'
+//import "./main.scss"
+import "babel-polyfill"
+import React from "react"
+import ReactDOM from "react-dom"
+import App from "../app"
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>,
+    <App />,
     document.getElementById("react")
   )
 })

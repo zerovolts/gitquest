@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 const BlockItem = props => (
   <div className="grid-x">

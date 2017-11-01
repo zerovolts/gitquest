@@ -1,9 +1,10 @@
-import React from 'react'
-import Profile from './Profile'
-import TabGroup from './TabGroup'
-import ContentArea from './ContentArea'
-import fetchDataHelper from '../helpers/fetch_data'
-import calculateStats from '../helpers/calculate_stats'
+import React from "react"
+
+import Profile from "./profile"
+import TabGroup from "./tab-group"
+import ContentArea from "./content-area"
+import fetchDataHelper from "../helpers/fetch-data"
+import calculateStats from "../helpers/calculate-stats"
 
 const tabs = ["Overview", "Repositories", "Network", "Achievements"]
 

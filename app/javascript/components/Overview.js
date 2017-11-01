@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 const Overview = props => {
   const rows = props.stats.sortedKeys.map(key =>

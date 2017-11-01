@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react"
 
-import Overview from './Overview'
-import BlockItem from './BlockItem'
-import RepositoryList from './RepositoryList'
-import AchievementList from './AchievementList'
+import Overview from "./overview"
+import BlockItem from "./block-item"
+import RepositoryList from "./repository-list"
+import AchievementList from "./achievement-list"
 
 const ContentArea = props => {
   switch (props.currentTab) {
