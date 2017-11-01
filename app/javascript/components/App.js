@@ -5,6 +5,18 @@ import Home from './Home'
 import UserPage from './UserPage'
 import Footer from './Footer'
 
+const GuildPage = props => (
+  <h1>Guild</h1>
+)
+
+const QuestsPage = props => (
+  <h1>Quests</h1>
+)
+
+const ExplorePage = props => (
+  <h1>Explore</h1>
+)
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -40,7 +52,10 @@ class App extends React.Component {
           <Route exact path="/" render={props =>
             <Home currentUser={this.state.currentUser} />
           } />
-          <Route exact path="/:login" component={UserPage} />
+          <Route path="/guild" component={GuildPage} />
+          <Route path="/quests" component={QuestsPage} />
+          <Route path="/explore" component={ExplorePage} />
+          <Route path="/:login" component={UserPage} />
         </Switch>
         <Footer />
       </div>

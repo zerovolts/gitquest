@@ -69,8 +69,8 @@ a, a:hover {
 
 #title {
   color: color(light, light);
-  margin: 0.5em 16px;
-  font-size: 1.5em;
+  margin: 11px 12px;
+  font-size: 1.6em;
 }
 
 hr {
@@ -153,5 +153,35 @@ a:hover .user-dropdown-selection {
 
 .search-bar input[type=text] {
   margin: 0;
-  margin-top: 13px;
+  margin-top: 10px;
+}
+
+.nav-tab a, .nav-tab a:hover, .nav-tab a:visited {
+  color: color(light, light);
+}
+
+.nav-tab {
+  color: color(light, light);
+  width: 100%;
+  padding: 17px;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.nav-tab.selected {
+  background: color(dark, dark);
+}
+
+.search-icon {
+  font-size: 24px;
+  background: color(dark, dark);
+  border-radius: $block-radius;
+  padding: 8px;
+  margin: 10px;
+  margin-left: 1em;
+  cursor: pointer;
+}
+
+.fa-times.search-icon {
+  padding: 8px 10px;
 }
