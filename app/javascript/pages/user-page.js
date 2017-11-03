@@ -1,8 +1,8 @@
 import React from "react"
 
-import Profile from "./profile"
-import TabGroup from "./tab-group"
-import ContentArea from "./content-area"
+import Profile from "../components/profile"
+import TabGroup from "../components/tab-group"
+import ContentArea from "../components/content-area"
 import fetchDataHelper from "../helpers/fetch-data"
 import calculateStats from "../helpers/calculate-stats"
 

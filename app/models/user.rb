@@ -4,11 +4,13 @@ class User < ApplicationRecord
 
   def self.create_with_omniauth(auth)
     info = auth["extra"]["raw_info"]
+    credentials = auth["credentials"]
 
     new_user = create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
 
+      user.token = credentials["token"]
       user.name = info["name"]
       user.login = info["login"]
       user.email = info["email"]

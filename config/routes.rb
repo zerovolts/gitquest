@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get "/signout" => "sessions#destroy"
   get "/current-user" => "sessions#user"
 
+  post "/webhooks/:provider/callback" => "webhooks#callback"
+  post "/webhooks" => "webhooks#create"
+  get "/webhooks/repos/:repo_slug" => "webhooks#show"
+
   namespace :api do
     namespace :v1 do
       resources :achievements, only: [:index]

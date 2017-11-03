@@ -2,21 +2,12 @@ import React from "react"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 
 import NavBar from "./components/nav-bar"
-import Home from "./components/home"
-import UserPage from "./components/user-page"
 import Footer from "./components/footer"
-
-const GuildPage = props => (
-  <h1>Guild</h1>
-)
-
-const QuestsPage = props => (
-  <h1>Quests</h1>
-)
-
-const ExplorePage = props => (
-  <h1>Explore</h1>
-)
+import HomePage from "./pages/home-page"
+import UserPage from "./pages/user-page"
+import GuildPage from "./pages/guild-page"
+import QuestsPage from "./pages/quests-page"
+import ExplorePage from "./pages/explore-page"
 
 class App extends React.Component {
   constructor(props) {
@@ -52,7 +43,7 @@ class App extends React.Component {
           />
           <Switch>
             <Route exact path="/" render={props =>
-              <Home currentUser={this.state.currentUser} />
+              <HomePage currentUser={this.state.currentUser} />
             } />
             <Route path="/guild" component={GuildPage} />
             <Route path="/quests" component={QuestsPage} />

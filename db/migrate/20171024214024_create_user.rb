@@ -6,6 +6,7 @@ class CreateUser < ActiveRecord::Migration[5.1]
       t.string :uid
 
       # Data from Github
+      t.string :token
       t.string :login
       t.string :name
       t.string :email

@@ -15,6 +15,8 @@ gem "coffee-rails", "~> 4.2"
 gem "jbuilder", "~> 2.5"
 gem "omniauth-github"
 gem "dotenv-rails"
+gem "github_api"
+gem "rest-client"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
