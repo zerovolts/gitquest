@@ -1,93 +1,37 @@
 import React from "react"
+import {observer} from "mobx-react"
 
 import Profile from "../components/profile"
 import TabGroup from "../components/tab-group"
 import ContentArea from "../components/content-area"
-import fetchDataHelper from "../helpers/fetch-data"
-import calculateStats from "../helpers/calculate-stats"
 
-const tabs = ["Overview", "Repositories", "Network", "Achievements"]
-
+@observer
 class UserPage extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      currentTab: tabs[0],
-      login: null,
-      user: null,
-      repos: null,
-      data: null,
-      stats: null
-    }
-
-    this.switchTab = this.switchTab.bind(this)
-    this.fetchData = this.fetchData.bind(this)
-  }
-
   componentDidMount() {
-    this.loadUser()
+    this.props.vm.loadUser(this.props.match.params.login, this.props.user)
   }
 
   componentDidUpdate() {
-    this.loadUser()
-  }
-
-  switchTab(id) {
-    this.setState({
-      currentTab: id
-    })
-  }
-
-  loadUser() {
-    if (this.props.match.params.login != this.state.login) {
-      this.setState({
-        login: this.props.match.params.login
-      })
-      this.fetchData(this.props.match.params.login)
-    }
-  }
-
-  fetchData(login) {
-    fetchDataHelper(login)
-      .then(response => {
-        return response.json()
-      })
-      .then(json => {
-        const repos = json.data.user.repositories.nodes
-          .filter(repo => !repo.isFork)
-          .filter(repo => repo.owner.login == json.data.user.login)
-
-        const stats = calculateStats(repos)
-
-        this.setState({
-          data: json.data,
-          repos: repos,
-          user: json.data.user,
-          stats: stats
-        })
-      })
+    this.props.vm.loadUser(this.props.match.params.login, this.props.user)
   }
 
   render() {
-    //const params = new URLSearchParams(this.props.location.search)
-    //const tab = params.get("tab")
-
     return (
       <div className="grid-x">
         <div className="small-full medium-4 large-offset-1 large-3 cell">
-          <Profile profile={this.state.user} stats={this.state.stats} />
+          <Profile profile={this.props.user.user} stats={this.props.user.stats} />
         </div>
         <div className="small-full medium-8 large-7 cell">
           <TabGroup
-            tabs={tabs}
-            currentTab={this.state.currentTab}
-            switchTab={this.switchTab}
+            tabs={this.props.vm.tabs}
+            currentTab={this.props.vm.currentTab}
+            switchTab={this.props.vm.switchTab}
           />
           <ContentArea
-            currentTab={this.state.currentTab}
-            repos={this.state.repos}
-            stats={this.state.stats}
-            login={this.state.login}
+            currentTab={this.props.vm.currentTab}
+            repos={this.props.user.repos}
+            stats={this.props.user.stats}
+            login={this.props.vm.login}
           />
         </div>
       </div>

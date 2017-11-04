@@ -11,11 +11,17 @@
 import "babel-polyfill"
 import React from "react"
 import ReactDOM from "react-dom"
+
 import App from "../app"
+import store from "../models/store"
+import vmStore from "../view-models/vm-store"
+
+window.store = store
+window.vmStore = vmStore
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <App />,
+    <App store={store} vmStore={vmStore} />,
     document.getElementById("react")
   )
 })

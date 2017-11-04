@@ -5,6 +5,8 @@ import BlockItem from "./block-item"
 import RepositoryList from "./repository-list"
 import AchievementList from "./achievement-list"
 
+import store from "../models/store"
+
 const ContentArea = props => {
   switch (props.currentTab) {
     case "Overview":
@@ -16,7 +18,7 @@ const ContentArea = props => {
     case "Network":
       return <BlockItem name="" body="" />
     case "Achievements":
-      return <AchievementList login={props.login} />
+      return <AchievementList login={props.login} store={store} />
   }
 }
 

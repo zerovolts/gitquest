@@ -3,7 +3,7 @@ const flattenArray = (array) => (
 )
 
 const calculateStats = (repos) => {
-  const languages = flattenArray(repos.map(repo => repo.languages.edges))
+  const languages = flattenArray(repos.map(repo => repo.languages.edges.slice()))
   const totalBytes = languages.reduce((acc, cur) => acc + cur.size, 0)
 
   const languageBytes = languages.reduce((acc, lang) => {

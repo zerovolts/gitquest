@@ -1,64 +1,24 @@
 import React from "react"
+import {observer} from "mobx-react"
 
 import BlockItem from "./block-item"
 import AchievementBlock from "./achievement-block"
 
-const blankAvailable = Array(9).fill(0).map((_, i) => { return {
-  id: i,
-  name: "",
-  description: "",
-  owned: false
-}})
-
-const blankAchievements = {
-  owned: [],
-  available: []
-}
-
+@observer
 class AchievementList extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      achievements: blankAchievements
-    }
-
-    this.loadAchievements = this.loadAchievements.bind(this)
-  }
-
-  loadAchievements() {
-    fetch(`/api/v1/users/${this.props.login}/achievements`, {credentials: "same-origin"})
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          achievements: data
-        })
-      })
-  }
-
   componentDidMount() {
-    this.loadAchievements()
+    this.props.store.achievementList.load(this.props.login)
   }
 
   render() {
-    const ownedAchievements = this.state.achievements.owned.map(achievement =>
+    const achievements = this.props.store.achievementList.achievements.map(achievement =>
       <div className="small-4 cell" key={achievement.id}>
         <AchievementBlock
           name={achievement.name}
           description={achievement.description}
-          owned={true} />
+          owned={achievement.owned} />
       </div>
     )
-
-    const availableAchievements = this.state.achievements.available.map(achievement =>
-      <div className="small-4 cell" key={achievement.id}>
-        <AchievementBlock
-          name={achievement.name}
-          description={achievement.description}
-          owned={false} />
-      </div>
-    )
-
-    const achievements = ownedAchievements.concat(availableAchievements)
 
     return (
       <div className="grid-x">
@@ -67,23 +27,5 @@ class AchievementList extends React.Component {
     )
   }
 }
-
-// const AchievementList = props => {
-//
-//   return (
-//     <div className="grid-x">
-//       {achievements.map(achievement => {
-//         return (
-//           <div className="small-4 cell" key={achievement.id}>
-//             <AchievementBlock
-//               name={achievement.name}
-//               description={achievement.description}
-//               owned={achievement.owned} />
-//           </div>
-//         )
-//       })}
-//     </div>
-//   )
-// }
 
 export default AchievementList
