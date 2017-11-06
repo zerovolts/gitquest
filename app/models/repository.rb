@@ -16,9 +16,9 @@ class Repository < ApplicationRecord
     }
 
     res = RestClient.post(
-      "https://api.github.com/repos/#{current_user.login}/#{self.name}/hooks",
+      "https://api.github.com/repos/#{self.user.login}/#{self.name}/hooks",
       new_webhook_data.to_json,
-      {"Authorization": "token #{current_user.token}"}
+      {"Authorization": "token #{self.user.token}"}
     )
     data = JSON.parse(res.body)
     self.update(linked: true)
