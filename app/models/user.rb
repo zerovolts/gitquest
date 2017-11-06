@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :achievement_ownerships
   has_many :achievements, through: :achievement_ownerships
+  has_many :quests, foreign_key: :assignee_id
 
   def self.create_with_omniauth(auth)
     info = auth["extra"]["raw_info"]

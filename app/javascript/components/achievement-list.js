@@ -7,7 +7,11 @@ import AchievementBlock from "./achievement-block"
 @observer
 class AchievementList extends React.Component {
   componentDidMount() {
-    this.props.store.achievementList.load(this.props.login)
+    //this.props.store.achievementList.load(this.props.login)
+  }
+
+  componentDidUpdate() {
+    //this.props.store.achievementList.load(this.props.login)
   }
 
   render() {

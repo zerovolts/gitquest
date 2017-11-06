@@ -4,14 +4,18 @@ class NavBar {
   @observable showSearch = false
   @observable showDropdown = false
   @observable searchString = ""
+  @observable wrapperRef = null
 
   constructor() {
     this.handleChange = this.handleChange.bind(this)
     this.toggleSearch = this.toggleSearch.bind(this)
     this.toggleDropdown = this.toggleDropdown.bind(this)
+    this.closeDropdown = this.closeDropdown.bind(this)
     this.signOut = this.signOut.bind(this)
     this.signIn = this.signIn.bind(this)
     this.handleEnter = this.handleEnter.bind(this)
+    this.handleClickOutside = this.handleClickOutside.bind(this)
+    this.setWrapperRef = this.setWrapperRef.bind(this)
   }
 
   handleChange(event) {
@@ -26,13 +30,17 @@ class NavBar {
     this.showDropdown = !this.showDropdown
   }
 
+  closeDropdown() {
+    this.showDropdown = false
+  }
+
   signIn() {
     window.location.replace("/auth/github")
   }
 
   signOut() {
     window.location.replace("/signout")
-    this.showDropdown = false
+    this.closeDropdown()
   }
 
   handleEnter(event, history) {
@@ -40,6 +48,16 @@ class NavBar {
       console.log(event)
       history.push("/" + this.searchString)
     }
+  }
+
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      this.closeDropdown()
+    }
+  }
+
+  setWrapperRef(node) {
+    this.wrapperRef = node
   }
 }
 

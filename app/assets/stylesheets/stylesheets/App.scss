@@ -161,6 +161,7 @@ a:hover .user-dropdown-selection {
 }
 
 .nav-tab {
+  user-select: none;
   color: color(light, light);
   width: 100%;
   padding: 17px;

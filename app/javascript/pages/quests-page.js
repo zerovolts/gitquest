@@ -1,13 +1,15 @@
 import React from "react"
+import {observer} from "mobx-react"
 
+@observer
 class QuestsPage extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      repoName: ""
-    }
+    // this.state = {
+    //   repoName: ""
+    // }
 
-    this.handleChange = this.handleChange.bind(this)
+    //this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.createWebhook = this.createWebhook.bind(this)
   }
@@ -24,33 +26,32 @@ class QuestsPage extends React.Component {
       })
   }
 
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
+  // handleChange(event) {
+  //   this.setState({
+  //     [event.target.name]: event.target.value
+  //   })
+  // }
 
   handleSubmit(event) {
     event.preventDefault()
     let payload = {
-      repo: this.state.repoName
+      repo: this.props.vm.titleInput
     }
     this.createWebhook(payload)
   }
 
   render() {
+    console.log(this.props.vm)
     return (
       <div className="grid-x">
         <div className="small-full medium-8 medium-offset-2 cell">
-          <form onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              name="repoName"
-              value={this.state.repoName}
-              onChange={this.handleChange}
-            />
-            <button type="submit" value="Submit">Submit</button>
-          </form>
+          <input
+            type="text"
+            name="titleInput"
+            value={console.log(this.props), this.props.vm.titleInput}
+            onChange={this.props.vm.handleChange}
+          />
+          <button onClick={this.props.vm.handleSubmit}>Submit</button>
         </div>
       </div>
     )

@@ -32,10 +32,16 @@ class App extends React.Component {
               <HomePage currentUser={store.auth.currentUser} />
             } />
             <Route path="/guild" component={GuildPage} />
-            <Route path="/quests" component={QuestsPage} />
+            <Route path="/quests" render={props =>
+              <QuestsPage vm={vmStore} />
+            } />
             <Route path="/explore" component={ExplorePage} />
             <Route path="/:login" render={props =>
-              <UserPage vm={vmStore.userPage} user={store.githubUser} {...props} />
+              <UserPage
+                vm={vmStore.userPage}
+                store={store}
+                login={props.match.params.login}
+              />
             } />
           </Switch>
           <Footer />
@@ -44,5 +50,6 @@ class App extends React.Component {
     )
   }
 }
+// {...props}
 
 export default App;

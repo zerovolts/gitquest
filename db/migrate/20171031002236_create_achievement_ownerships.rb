@@ -1,4 +1,4 @@
-class CreateAchievementOwnership < ActiveRecord::Migration[5.1]
+class CreateAchievementOwnerships < ActiveRecord::Migration[5.1]
   def change
     create_table :achievement_ownerships do |t|
       t.belongs_to :user, index: true, null: false

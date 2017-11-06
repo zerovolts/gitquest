@@ -1,24 +1,27 @@
 import React from "react"
+import {Link} from "react-router-dom"
 import {observer} from "mobx-react"
 
 import UserDropdown from "./user-dropdown"
 
 const UserBlock = observer(({vm, currentUser}) => {
   const dropdown = vm.showDropdown
-    ? <UserDropdown currentUser={currentUser} />
+    ? <UserDropdown vm={vm} currentUser={currentUser} />
     : null
+
+  const caret = vm.showDropdown ? "fa fa-caret-up" : "fa fa-caret-down"
 
   return (
     <div className="user-block">
-      <a href={`/${currentUser.login}`}>
+      <Link to={"/" + currentUser.login}>
         <img
           src={currentUser.avatar_url}
           className="nav-avatar">
         </img>
-      </a>
+      </Link>
       {currentUser.login}
       <span onClick={vm.toggleDropdown} className="dropdown-button">
-        <i className="fa fa-caret-down" aria-hidden="true"></i>
+        <i className={caret} aria-hidden="true"></i>
       </span>
       {dropdown}
     </div>
