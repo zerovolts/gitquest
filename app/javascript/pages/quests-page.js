@@ -1,7 +1,7 @@
 import React from "react"
-import {observer} from "mobx-react"
+import {observer, inject} from "mobx-react"
 
-@observer
+@inject("vmStore") @observer
 class QuestsPage extends React.Component {
   constructor(props) {
     super(props)
@@ -35,23 +35,22 @@ class QuestsPage extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     let payload = {
-      repo: this.props.vm.titleInput
+      repo: vmStore.titleInput
     }
     this.createWebhook(payload)
   }
 
   render() {
-    console.log(this.props.vm)
     return (
       <div className="grid-x">
         <div className="small-full medium-8 medium-offset-2 cell">
           <input
             type="text"
             name="titleInput"
-            value={console.log(this.props), this.props.vm.titleInput}
-            onChange={this.props.vm.handleChange}
+            value={console.log(this.props), vmStore.titleInput}
+            onChange={vmStore.handleChange}
           />
-          <button onClick={this.props.vm.handleSubmit}>Submit</button>
+          <button onClick={vmStore.handleSubmit}>Submit</button>
         </div>
       </div>
     )

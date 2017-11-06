@@ -15,6 +15,11 @@ Rails.application.routes.draw do
       get "/users/:login/achievements" => "achievements#show"
       get "user" => "api#user"
 
+      get "/repos" => "repositories#index"
+      get "/repos/:repo_slug/webhook" => "repositories#webhook"
+      post "/repos/:repo_slug/link" => "repositories#link"
+      post "/repos/:repo_slug/unlink" => "repositories#unlink"
+
       get "*path" => "api#error"
     end
   end

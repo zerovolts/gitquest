@@ -1,11 +1,14 @@
 import React from "react"
+import {observer, inject} from "mobx-react"
 
-const HomePage = props => {
+const HomePage = inject("store")(observer((props) => {
+  const currentUser = store.auth.currentUser
+
   let welcome = null
-  if (props.currentUser) {
+  if (currentUser) {
     welcome = (
       <div className="content">
-        <h1>Welcome back, {props.currentUser.name}!</h1>
+        <h1>Welcome back, {currentUser.name}!</h1>
         <p>Here are your active quests that you haven't completed yet.</p>
       </div>
     )
@@ -29,6 +32,6 @@ const HomePage = props => {
       </div>
     </div>
   )
-}
+}))
 
 export default HomePage

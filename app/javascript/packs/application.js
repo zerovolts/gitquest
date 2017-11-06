@@ -11,6 +11,7 @@
 import "babel-polyfill"
 import React from "react"
 import ReactDOM from "react-dom"
+import {Provider} from "mobx-react"
 
 import App from "../app"
 import store from "../models/store"
@@ -21,7 +22,9 @@ window.vmStore = vmStore
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <App store={store} vmStore={vmStore} />,
+    <Provider store={store} vmStore={vmStore}>
+      <App />
+    </Provider>,
     document.getElementById("react")
   )
 })

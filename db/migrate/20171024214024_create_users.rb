@@ -21,6 +21,9 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.datetime :github_created_at
       t.datetime :github_updated_at
 
+      t.integer :experience
+      t.integer :coins
+
       t.timestamps
     end
 

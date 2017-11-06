@@ -11,9 +11,13 @@ query User($login: String!) {
         id
         name
         description
+        url
         isFork
         owner {
           login
+        }
+        stargazers {
+          totalCount
         }
         primaryLanguage {
           name

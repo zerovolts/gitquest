@@ -1,7 +1,7 @@
 import {observable, computed} from "mobx"
 
 class UserPage {
-  @observable tabs = ["Overview", "Repositories", "Network", "Achievements"]
+  @observable tabs = ["Overview", "Repositories", "Quest Log", "Achievements"]
   @observable currentTab = this.tabs[0]
   @observable login = null
 

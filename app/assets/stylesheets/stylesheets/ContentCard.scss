@@ -29,3 +29,26 @@
   bottom: 0.8em;
   right: 0.8em;
 }
+
+.linked {
+  background: color(red);
+  box-shadow: 0px 4px color(red, dark);
+}
+
+.unlinked {
+  background: color(green);
+  box-shadow: 0px 4px color(green, dark);
+}
+
+.link-button {
+  width: inherit;
+  margin: 0;
+  padding: 0.4em;
+  position: absolute;
+  bottom: 16px;
+  right: 0.8em;
+}
+
+.link-button:active {
+  bottom: 12px;
+}

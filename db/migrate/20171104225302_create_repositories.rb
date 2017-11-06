@@ -2,8 +2,9 @@ class CreateRepositories < ActiveRecord::Migration[5.1]
   def change
     create_table :repositories do |t|
       t.string :name, null: false
+      t.boolean :linked, null: false, default: false
       t.string :github_url, null: false
-      t.string :clone_url, null: false
+      t.string :clone_url
       t.integer :stars, null: false
       t.text :description
       t.string :language

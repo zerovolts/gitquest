@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
-import {observer} from "mobx-react"
+import {observer, inject} from "mobx-react"
 
 import NavBar from "./components/nav-bar/nav-bar"
 import Footer from "./components/footer"
@@ -10,38 +10,24 @@ import GuildPage from "./pages/guild-page"
 import QuestsPage from "./pages/quests-page"
 import ExplorePage from "./pages/explore-page"
 
-@observer
+@inject("store") @observer
 class App extends React.Component {
   componentDidMount() {
-    this.props.store.auth.load()
+    store.auth.load()
   }
 
   render() {
-    const store = this.props.store
-    const vmStore = this.props.vmStore
-
     return (
       <BrowserRouter>
         <div className="app">
-          <NavBar
-            vm={vmStore.navBar}
-            currentUser={store.auth.currentUser}
-          />
+          <NavBar />
           <Switch>
-            <Route exact path="/" render={props =>
-              <HomePage currentUser={store.auth.currentUser} />
-            } />
+            <Route exact path="/" component={HomePage} />
             <Route path="/guild" component={GuildPage} />
-            <Route path="/quests" render={props =>
-              <QuestsPage vm={vmStore} />
-            } />
+            <Route path="/quests" component={QuestsPage} />
             <Route path="/explore" component={ExplorePage} />
             <Route path="/:login" render={props =>
-              <UserPage
-                vm={vmStore.userPage}
-                store={store}
-                login={props.match.params.login}
-              />
+              <UserPage login={props.match.params.login} />
             } />
           </Switch>
           <Footer />
@@ -50,6 +36,5 @@ class App extends React.Component {
     )
   }
 }
-// {...props}
 
 export default App;

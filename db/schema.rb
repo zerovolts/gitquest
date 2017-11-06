@@ -51,8 +51,9 @@ ActiveRecord::Schema.define(version: 20171104225306) do
 
   create_table "repositories", force: :cascade do |t|
     t.string "name", null: false
+    t.boolean "linked", default: false, null: false
     t.string "github_url", null: false
-    t.string "clone_url", null: false
+    t.string "clone_url"
     t.integer "stars", null: false
     t.text "description"
     t.string "language"
@@ -80,6 +81,8 @@ ActiveRecord::Schema.define(version: 20171104225306) do
     t.boolean "hireable"
     t.datetime "github_created_at"
     t.datetime "github_updated_at"
+    t.integer "experience"
+    t.integer "coins"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["login"], name: "index_users_on_login", unique: true

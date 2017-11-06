@@ -15,7 +15,7 @@ const ContentArea = props => {
         : <BlockItem name="Overview" body="" />
     case "Repositories":
       return <RepositoryList repos={props.repos} />
-    case "Network":
+    case "Quest Log":
       return <BlockItem name="" body="" />
     case "Achievements":
       return <AchievementList login={props.login} store={store} />
