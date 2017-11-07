@@ -30,7 +30,8 @@ class Repository < ApplicationRecord
   end
 
   def unlink
-    res = RestClient.delete(api_url(self.user.login, self.name) + "/#{self.webhook_id}")
+    url = api_url(self.user.login, self.name) + "/#{self.webhook_id}"
+    res = RestClient.delete(url, {"Authorization": "token #{self.user.token}"})
 
     #TODO: check for success
     self.update(webhook_id: nil, linked: false)
