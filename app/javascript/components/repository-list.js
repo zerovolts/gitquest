@@ -1,11 +1,13 @@
 import React from "react"
+import {observer, inject} from "mobx-react"
 
 import BlockItem from "./block-item"
 import RepositoryBlock from "./repository-block"
 
-const RepositoryList = props => {
-  if (props.repos) {
-    const repos = props.repos.slice().reverse()
+
+const RepositoryList = inject("store")(observer(props => {
+  if (store.githubUser.repos) {
+    const repos = store.githubUser.repos.slice().reverse()
     return (
       <div className="grid-x">
         {repos.map(repo => {
@@ -20,6 +22,6 @@ const RepositoryList = props => {
   } else {
     return <BlockItem name="" body="Sorry, this user has no repositories." />
   }
-}
+}))
 
 export default RepositoryList

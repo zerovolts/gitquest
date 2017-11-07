@@ -20,12 +20,19 @@ class Api::V1::RepositoriesController < ApplicationController
       )
     end
 
-    @repository.link
-
-    # TODO: check if webhook was successful
-    render json: @repository
+    if @repository.link
+      render json: @repository
+    else
+      render json: {status: "webhook could not be created"}
+    end
   end
 
-  def repository_params
+  def unlink
+    @repository = Repository.find_by(user: current_user, name: params[:repo_slug])
+    if @repository.unlink
+      render json: {status: "deleted webhook"}
+    else
+      render json: {status: "could not delete webhook"}
+    end
   end
 end

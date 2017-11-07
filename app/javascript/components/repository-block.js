@@ -1,6 +1,7 @@
 import React from "react"
+import {inject} from "mobx-react"
 
-const linkRepo = repo => {
+const linkRepo = (repo, store) => {
   fetch(`/api/v1/repos/${repo.name}/link.json`, {
     credentials: "same-origin",
     method: "post",
@@ -8,11 +9,24 @@ const linkRepo = repo => {
     body: JSON.stringify(repo)
   }).then(res => res.json())
     .then(data => {
+      store.githubUser.loadLinkedRepos()
       console.log("Linked Repository: ", data)
     })
 }
 
-const RepositoryBlock = props => {
+const unlinkRepo = (repo, store) => {
+  fetch(`/api/v1/repos/${repo.name}/unlink.json`, {
+    credentials: "same-origin",
+    method: "post",
+    headers: {"Content-Type": "application/json"}
+  }).then(res => res.json())
+    .then(data => {
+      store.githubUser.loadLinkedRepos()
+      console.log("Unlinked Repository: ", data)
+    })
+}
+
+const RepositoryBlock = inject("store")(props => {
   let primaryLanguage = null
   let primaryColor = "white"
 
@@ -26,8 +40,8 @@ const RepositoryBlock = props => {
   }
 
   const linkButton = props.repo.linked
-    ? <button className="link-button linked" onClick={() => linkRepo(props.repo)}>Unlink</button>
-    : <button className="link-button unlinked" onClick={() => linkRepo(props.repo)}>Link</button>
+    ? <button className="link-button linked" onClick={() => unlinkRepo(props.repo, store)}>Unlink</button>
+    : <button className="link-button unlinked" onClick={() => linkRepo(props.repo, store)}>Link</button>
 
   return (
     <div className="content-card" style={{borderTop: "0.3em solid " + primaryColor}}>
@@ -39,6 +53,6 @@ const RepositoryBlock = props => {
       {linkButton}
     </div>
   )
-}
+})
 
 export default RepositoryBlock

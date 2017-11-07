@@ -16,21 +16,29 @@ class Repository < ApplicationRecord
     }
 
     res = RestClient.post(
-      "https://api.github.com/repos/#{self.user.login}/#{self.name}/hooks",
+      api_url(self.user.login, self.name),
       new_webhook_data.to_json,
       {"Authorization": "token #{self.user.token}"}
     )
     data = JSON.parse(res.body)
-    self.update(linked: true)
 
-    puts data
-
-    return data
+    if data["active"]
+      self.update(webhook_id: data["id"], linked: true)
+      return {status: "created"}
+    end
+    false
   end
 
   def unlink
-    #TODO: destroy webhook
+    res = RestClient.delete(api_url(self.user.login, self.name) + "/#{self.webhook_id}")
 
-    self.update(linked: false)
+    #TODO: check for success
+    self.update(webhook_id: nil, linked: false)
+
+    return {status: "deleted"}
+  end
+
+  def api_url(login, name)
+    "https://api.github.com/repos/#{login}/#{name}/hooks"
   end
 end
