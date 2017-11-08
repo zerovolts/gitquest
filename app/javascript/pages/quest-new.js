@@ -27,7 +27,6 @@ class QuestNew extends React.Component {
               </div>
 
               <div className="quest-label small-2 cell">Repository</div>
-
               <div className="small-8 cell">
                 <select name="repositoryIdInput" onChange={quest.handleChange}>
                   {store.githubUser.linked_repos.map(repo =>

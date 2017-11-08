@@ -8,8 +8,9 @@ const HomePage = inject("store")(observer((props) => {
   if (currentUser) {
     welcome = (
       <div className="content">
-        <h1>Welcome back, {currentUser.name}!</h1>
-        <p>Here are your active quests that you haven't completed yet.</p>
+        <h1>Welcome, {currentUser.name.split(" ")[0]}!</h1>
+        <p>You can search your friends' profile pages with the search bar at the top.</p>
+        <p>Find some quests to complete to gain experience!</p>
       </div>
     )
   } else {
