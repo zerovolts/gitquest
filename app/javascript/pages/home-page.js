@@ -6,9 +6,10 @@ const HomePage = inject("store")(observer((props) => {
 
   let welcome = null
   if (currentUser) {
+    const firstName = currentUser.name ? currentUser.name.split(" ")[0] : ""
     welcome = (
       <div className="content">
-        <h1>Welcome, {currentUser.name.split(" ")[0]}!</h1>
+        <h1>Welcome, {firstName}!</h1>
         <p>You can search your friends' profile pages with the search bar at the top.</p>
         <p>Find some quests to complete to gain experience!</p>
       </div>
