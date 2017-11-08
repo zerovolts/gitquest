@@ -1,21 +1,13 @@
 import React from "react"
-import {observer} from "mobx-react"
+import {observer, inject} from "mobx-react"
 
 import BlockItem from "./block-item"
 import AchievementBlock from "./achievement-block"
 
-@observer
+@inject("store") @observer
 class AchievementList extends React.Component {
-  componentDidMount() {
-    //this.props.store.achievementList.load(this.props.login)
-  }
-
-  componentDidUpdate() {
-    //this.props.store.achievementList.load(this.props.login)
-  }
-
   render() {
-    const achievements = this.props.store.achievementList.achievements.map(achievement =>
+    const achievements = store.achievementList.achievements.map(achievement =>
       <div className="small-4 cell" key={achievement.id}>
         <AchievementBlock
           name={achievement.name}

@@ -7,6 +7,7 @@ class GitHubUser {
   @observable user = {}
   @observable all_repos = []
   @observable linked_repos = []
+  @observable quests = []
 
   @computed get repos() {
     if (this.all_repos) {

@@ -48,6 +48,7 @@ h1, h2, h3, h4, h5 {
 .tab-bar {
   @include block(color(light, light), color(light, dark));
   margin: 1em;
+  position: relative;
 }
 
 .nav-bar {
@@ -185,4 +186,21 @@ a:hover .user-dropdown-selection {
 
 .fa-times.search-icon {
   padding: 8px 10px;
+}
+
+.available-quest-title {
+  margin-left: 1em;
+  font-size: 32px;
+}
+
+.create-quest {
+  position: absolute;
+  margin: 1em;
+  right: 1em;
+  width: 10em;
+}
+
+.quest-label {
+  margin: 1em;
+  text-align: right;
 }

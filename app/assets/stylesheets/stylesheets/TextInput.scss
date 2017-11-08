@@ -5,6 +5,7 @@ input[type=text] {
   border: none;
   border-radius: 0.3em;
   color: $black;
+  //width: inherit;
 }
 
 input[type=text]:focus {

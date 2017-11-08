@@ -12,8 +12,14 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :achievements, only: [:index]
+      resources :quests, only: [:index, :show, :create]
+      
+      get "/users/:login/quests" => "quests#quest_log"
+      get "/quests/:id/accept" => "quests#accept"
+      get "/quests/:id/abandon" => "quests#abandon"
+
       get "/users/:login/achievements" => "achievements#show"
-      get "user" => "api#user"
+      get "/user" => "api#user"
 
       get "/repos" => "repositories#index"
       get "/repos/:repo_slug/webhook" => "repositories#webhook"

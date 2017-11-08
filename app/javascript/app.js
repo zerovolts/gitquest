@@ -9,6 +9,8 @@ import UserPage from "./pages/user-page"
 import GuildPage from "./pages/guild-page"
 import QuestsPage from "./pages/quests-page"
 import ExplorePage from "./pages/explore-page"
+import QuestShow from "./pages/quest-show"
+import QuestNew from "./pages/quest-new"
 
 @inject("store") @observer
 class App extends React.Component {
@@ -24,7 +26,9 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/guild" component={GuildPage} />
-            <Route path="/quests" component={QuestsPage} />
+            <Route exact path="/quests" component={QuestsPage} />
+            <Route path="/quests/new" component={QuestNew} />
+            <Route path="/quests/:id" component={QuestShow} />
             <Route path="/explore" component={ExplorePage} />
             <Route path="/:login" render={props =>
               <UserPage login={props.match.params.login} />

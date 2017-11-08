@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20171104225306) do
 
   create_table "quests", force: :cascade do |t|
     t.string "title", null: false
+    t.integer "github_id", null: false
     t.string "github_url", null: false
     t.boolean "state", default: false, null: false
     t.text "body"
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 20171104225306) do
 
   create_table "repositories", force: :cascade do |t|
     t.string "name", null: false
+    t.integer "webhook_id"
     t.boolean "linked", default: false, null: false
     t.string "github_url", null: false
     t.string "clone_url"

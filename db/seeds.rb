@@ -41,3 +41,23 @@ Achievement.create(
     description: "Attain level #{x}.",
     value: 1)
 end
+
+Quest.create(
+  title: "Destroy 5 evil bugs",
+  github_id: 2,
+  github_url: "oh",
+  state: false,
+  body: "Please help me. These bugs are causing my project to not work. I need you to annihilate the bugs :)",
+  reward: 150,
+  repository: Repository.first
+)
+
+Quest.create(
+  title: "Add a \"like\" feature",
+  github_id: 1,
+  github_url: "k",
+  state: false,
+  body: "Help me to create a \"like\" feature for my application!",
+  reward: 150,
+  repository: Repository.first
+)

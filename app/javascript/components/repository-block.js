@@ -10,7 +10,7 @@ const linkRepo = (repo, store) => {
   }).then(res => res.json())
     .then(data => {
       store.githubUser.loadLinkedRepos()
-      console.log("Linked Repository: ", data)
+      //console.log("Linked Repository: ", data)
     })
 }
 
@@ -22,7 +22,7 @@ const unlinkRepo = (repo, store) => {
   }).then(res => res.json())
     .then(data => {
       store.githubUser.loadLinkedRepos()
-      console.log("Unlinked Repository: ", data)
+      //console.log("Unlinked Repository: ", data)
     })
 }
 
@@ -50,7 +50,7 @@ const RepositoryBlock = inject("store")(props => {
       <div className="repo-description">{props.repo.description}</div>
       {primaryLanguage}
       <div className="repo-value">{/*Math.floor(Math.random() * 100)*/}</div>
-      {linkButton}
+      {store.auth.currentUser.login == store.githubUser.user.login ? linkButton : null}
     </div>
   )
 })

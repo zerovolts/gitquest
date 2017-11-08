@@ -11,11 +11,13 @@ class UserPage extends React.Component {
     vmStore.userPage.loadUser(this.props.login, store.githubUser)
     store.githubUser.loadLinkedRepos()
     store.achievementList.load(this.props.login)
+    store.quest.loadQuests(this.props.login)
   }
 
   componentDidUpdate() {
     vmStore.userPage.loadUser(this.props.login, store.githubUser)
     store.achievementList.load(this.props.login)
+    store.quest.loadQuests(this.props.login)
   }
 
   render() {

@@ -7,7 +7,8 @@ class Repository < ApplicationRecord
       active: true,
       events: [
         "push",
-        "pull_request"
+        "pull_request",
+        "issues"
       ],
       config: {
         url: "http://gitquest.io/webhooks/github/callback",

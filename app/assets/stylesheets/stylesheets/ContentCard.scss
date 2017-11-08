@@ -5,6 +5,7 @@
 }
 
 .repo-name {
+  color: color(blue);
   font-size: 1.1em;
   font-weight: bold;
   text-align: center;
@@ -25,9 +26,11 @@
 
 .repo-value {
   color: color(dark);
+  font-weight: bold;
+  font-size: 1.1em;
   position: absolute;
   bottom: 0.8em;
-  right: 0.8em;
+  left: 1em;
 }
 
 .linked {
@@ -41,7 +44,7 @@
 }
 
 .link-button {
-  width: inherit;
+  width: 5em;
   margin: 0;
   padding: 0.4em;
   position: absolute;
@@ -50,5 +53,35 @@
 }
 
 .link-button:active {
+  bottom: 12px;
+}
+
+.abandon-button {
+  background: color(red);
+  box-shadow: 0px 4px color(red, dark);
+  width: 7em;
+  margin: 0;
+  padding: 0.4em;
+  position: absolute;
+  bottom: 16px;
+  right: 0.8em;
+}
+
+.abandon-button:active {
+  bottom: 12px;
+}
+
+.accept-button {
+  background: color(green);
+  box-shadow: 0px 4px color(green, dark);
+  width: 7em;
+  margin: 0;
+  padding: 0.8em;
+  position: absolute;
+  bottom: 16px;
+  right: 0.8em;
+}
+
+.accept-button:active {
   bottom: 12px;
 }

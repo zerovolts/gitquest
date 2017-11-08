@@ -1,56 +1,40 @@
 import React from "react"
+import {Link, withRouter} from "react-router-dom"
 import {observer, inject} from "mobx-react"
 
-@inject("vmStore") @observer
+@inject("store", "vmStore") @observer
 class QuestsPage extends React.Component {
-  constructor(props) {
-    super(props)
-    // this.state = {
-    //   repoName: ""
-    // }
-
-    //this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.createWebhook = this.createWebhook.bind(this)
-  }
-
-  createWebhook(payload) {
-    fetch("/webhooks.json", {
-      credentials: "same-origin",
-      method: "post",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(payload)
-    }).then(res => res.json())
-      .then(data => {
-        console.log(data)
-      })
-  }
-
-  // handleChange(event) {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   })
-  // }
-
-  handleSubmit(event) {
-    event.preventDefault()
-    let payload = {
-      repo: vmStore.titleInput
-    }
-    this.createWebhook(payload)
+  componentDidMount() {
+    store.quest.loadAvailableQuests()
   }
 
   render() {
+    const available = store.quest.available
+
+    const availableQuests = available.map(quest =>
+      <div className="small-6 cell" key={quest.id}>
+        <div className="content-card">
+        <a href={`/quests/${quest.id}`}><div className="repo-name">{quest.title}</div></a>
+        <hr />
+        <div className="repo-description">{quest.body}</div>
+        <div className="repo-value">{quest.reward} xp</div>
+        <button
+          onClick={() => store.quest.acceptQuest(quest.id)}
+          className="accept-button">Accept</button>
+        </div>
+      </div>
+    )
+
     return (
       <div className="grid-x">
         <div className="small-full medium-8 medium-offset-2 cell">
-          <input
-            type="text"
-            name="titleInput"
-            value={console.log(this.props), vmStore.titleInput}
-            onChange={vmStore.handleChange}
-          />
-          <button onClick={vmStore.handleSubmit}>Submit</button>
+          <div className="tab-bar">
+            <span className="available-quest-title">Available Quests</span>
+            <Link to="/quests/new"><button className="create-quest">Create Quest</button></Link>
+          </div>
+          <div className="grid-x">
+            {availableQuests}
+          </div>
         </div>
       </div>
     )

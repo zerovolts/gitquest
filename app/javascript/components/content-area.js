@@ -3,6 +3,7 @@ import React from "react"
 import Overview from "./overview"
 import BlockItem from "./block-item"
 import RepositoryList from "./repository-list"
+import QuestLog from "./quest-log"
 import AchievementList from "./achievement-list"
 
 import store from "../models/store"
@@ -16,7 +17,7 @@ const ContentArea = props => {
     case "Repositories":
       return <RepositoryList repos={props.repos} />
     case "Quest Log":
-      return <BlockItem name="" body="" />
+      return <QuestLog />
     case "Achievements":
       return <AchievementList login={props.login} store={store} />
   }

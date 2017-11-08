@@ -1,11 +1,11 @@
 import NavBar from "./nav-bar"
 import UserPage from "./user-page"
-import QuestsPage from "./quests-page"
+import QuestsNew from "./quests-new"
 
 const vmStore = {}
 
 vmStore.navBar = new NavBar()
 vmStore.userPage = new UserPage()
-vmStore.questsPage = new QuestsPage()
+vmStore.questsNew = new QuestsNew()
 
 export default vmStore
