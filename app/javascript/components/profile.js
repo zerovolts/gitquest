@@ -11,6 +11,8 @@ const defaultProfile = {
 
 const Profile = props => {
   const profile = props.profile ? props.profile : defaultProfile
+  const user = props.user
+
   let title, titleColor
   if (props.stats) {
     const primaryLanguage = props.stats.sortedKeys[0]
@@ -20,10 +22,11 @@ const Profile = props => {
 
   return (
     <div className="profile">
+      <h3 className="profile-level">{profile.name || profile.login}</h3>
       <img className="profile-pic" src={profile.avatarUrl} alt="Profile Picture"></img>
-      <h3>{profile.name}</h3>
+      {user ? <div className="progress-bar-red"><span style={{width: user.experience_data.completion_percent + "%"}}></span></div> : null}
+      <div className="profile-level">Level {user ? props.user.level : 0}</div>
       <div className="language-title" style={{color: titleColor}}>{title}</div>
-      <div>@{profile.login}</div>
       <div className="bio">{profile.bio}</div>
     </div>
   )

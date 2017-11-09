@@ -45,7 +45,6 @@ class NavBar {
 
   handleEnter(event, history) {
     if ((event.key == "Enter") && this.searchString) {
-      console.log(event)
       history.push("/" + this.searchString)
     }
   }

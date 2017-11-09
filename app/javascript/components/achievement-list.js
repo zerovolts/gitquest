@@ -12,7 +12,8 @@ class AchievementList extends React.Component {
         <AchievementBlock
           name={achievement.name}
           description={achievement.description}
-          owned={achievement.owned} />
+          owned={achievement.owned}
+          value={achievement.value} />
       </div>
     )
 

@@ -8,6 +8,8 @@ class SessionsController < ApplicationController
       auth["provider"],
       auth["uid"]
     ) || User.create_with_omniauth(auth)
+    
+    user.recalculate_achievements
     session[:user_id] = user.id
     redirect_to root_url, :notice => "Signed in!"
   end

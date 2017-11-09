@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Quando');
+@import url("https://fonts.googleapis.com/css?family=Quando");
 
 $block-depth: 0.25em;
 $block-radius: 0.3em;
@@ -11,19 +11,18 @@ $block-radius: 0.3em;
   padding: 1em;
 }
 
-//html, body, #react, .app, .grid-x, .cell {
-//  height: 100%;
-//}
+* {
+  font-family: "Quando";
+}
 
 body {
   background: color(light);
   color: color(dark, dark);
-  font-family: 'Quando';
   //user-select: none;
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'Quando';
+  font-family: "Quando";
 }
 
 .profile {
@@ -95,6 +94,7 @@ hr {
 }
 
 .language-title {
+  text-align: center;
   font-weight: bold;
   margin-bottom: 0.5em;
 }
@@ -203,4 +203,9 @@ a:hover .user-dropdown-selection {
 .quest-label {
   margin: 1em;
   text-align: right;
+}
+
+.profile-level {
+  text-align: center;
+  font-weight: bold;
 }

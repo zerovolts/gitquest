@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :achievements, only: [:index]
       resources :quests, only: [:index, :show, :create]
-      
+
+      get "/users/:login" => "users#show"
+
       get "/users/:login/quests" => "quests#quest_log"
       get "/quests/:id/accept" => "quests#accept"
       get "/quests/:id/abandon" => "quests#abandon"

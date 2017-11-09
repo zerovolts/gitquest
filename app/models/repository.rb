@@ -1,6 +1,11 @@
 class Repository < ApplicationRecord
   belongs_to :user
 
+  validates :name, presence: true, uniqueness: true
+  validates :linked, presence: true
+  validates :github_url, presence: true
+  validates :stars, presence: true
+
   def link
     new_webhook_data = {
       name: "web",

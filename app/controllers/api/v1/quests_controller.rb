@@ -19,7 +19,7 @@ class Api::V1::QuestsController < ApplicationController
 
   def quest_log
     @user = User.find_by(login: params[:login])
-    @quests = @user.quests
+    @quests = @user&.quests || []
     #@quests = Quest.where(assignee_id: params[:id])
 
     render json: @quests

@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20171104225306) do
     t.string "slug", null: false
     t.string "name", null: false
     t.text "description", null: false
-    t.integer "value", null: false
+    t.integer "value", default: 0, null: false
     t.string "language"
     t.string "icon_url"
     t.integer "owner_count", default: 0, null: false
@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 20171104225306) do
     t.string "title", null: false
     t.integer "github_id", null: false
     t.string "github_url", null: false
-    t.boolean "state", default: false, null: false
-    t.text "body"
-    t.integer "reward"
+    t.boolean "is_complete", default: false, null: false
+    t.text "body", null: false
+    t.integer "reward", default: 0, null: false
     t.integer "assignee_id"
     t.bigint "repository_id"
     t.index ["repository_id"], name: "index_quests_on_repository_id"
@@ -52,11 +52,11 @@ ActiveRecord::Schema.define(version: 20171104225306) do
 
   create_table "repositories", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "webhook_id"
     t.boolean "linked", default: false, null: false
     t.string "github_url", null: false
-    t.string "clone_url"
     t.integer "stars", null: false
+    t.integer "webhook_id"
+    t.string "clone_url"
     t.text "description"
     t.string "language"
     t.bigint "user_id"
@@ -67,13 +67,13 @@ ActiveRecord::Schema.define(version: 20171104225306) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.string "token"
-    t.string "login"
+    t.string "provider", null: false
+    t.string "uid", null: false
+    t.string "token", null: false
+    t.string "login", null: false
+    t.string "github_url", null: false
     t.string "name"
     t.string "email"
-    t.string "github_url"
     t.string "location"
     t.string "avatar_url"
     t.text "bio"
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 20171104225306) do
     t.boolean "hireable"
     t.datetime "github_created_at"
     t.datetime "github_updated_at"
-    t.integer "experience"
-    t.integer "coins"
+    t.integer "experience", default: 0, null: false
+    t.integer "coins", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["login"], name: "index_users_on_login", unique: true

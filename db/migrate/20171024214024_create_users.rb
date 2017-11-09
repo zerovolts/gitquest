@@ -2,15 +2,15 @@ class CreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
       # OAuth
-      t.string :provider
-      t.string :uid
+      t.string :provider, null: false
+      t.string :uid, null: false
 
       # Data from Github
-      t.string :token
-      t.string :login
+      t.string :token, null: false
+      t.string :login, null: false
+      t.string :github_url, null: false
       t.string :name
       t.string :email
-      t.string :github_url
       t.string :location
       t.string :avatar_url
       t.text :bio
@@ -21,8 +21,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.datetime :github_created_at
       t.datetime :github_updated_at
 
-      t.integer :experience
-      t.integer :coins
+      t.integer :experience, null: false, default: 0
+      t.integer :coins, null: false, default: 0
 
       t.timestamps
     end

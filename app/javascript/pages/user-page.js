@@ -24,7 +24,7 @@ class UserPage extends React.Component {
     return (
       <div className="grid-x">
         <div className="small-full medium-4 large-offset-1 large-3 cell">
-          <Profile profile={store.githubUser.user} stats={store.githubUser.stats} />
+          <Profile profile={store.githubUser.user} user={store.githubUser.gitquestUser} stats={store.githubUser.stats} />
         </div>
         <div className="small-full medium-8 large-7 cell">
           <TabGroup

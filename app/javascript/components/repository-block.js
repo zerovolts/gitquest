@@ -50,7 +50,7 @@ const RepositoryBlock = inject("store")(props => {
       <div className="repo-description">{props.repo.description}</div>
       {primaryLanguage}
       <div className="repo-value">{/*Math.floor(Math.random() * 100)*/}</div>
-      {store.auth.currentUser.login == store.githubUser.user.login ? linkButton : null}
+      {store.auth.currentUser && store.auth.currentUser.login == store.githubUser.user.login ? linkButton : null}
     </div>
   )
 })

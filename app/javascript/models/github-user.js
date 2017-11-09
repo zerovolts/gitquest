@@ -5,6 +5,7 @@ import calculateStats from "../helpers/calculate-stats"
 
 class GitHubUser {
   @observable user = {}
+  @observable gitquestUser = null
   @observable all_repos = []
   @observable linked_repos = []
   @observable quests = []
@@ -46,6 +47,11 @@ class GitHubUser {
       .then(data => {
         this.user = data.data.user
         this.all_repos = this.user.repositories.nodes
+      })
+
+    fetch(`/api/v1/users/${login}`, {credentials: "same-origin"}).then(res => res.json())
+      .then(data => {
+        this.gitquestUser = data
       })
   }
 }
