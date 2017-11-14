@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe User, type: :model do
+RSpec.describe Achievement, type: :model do
   let!(:user) do
     User.create_with_omniauth(GITHUB_USER_DATA)
   end
