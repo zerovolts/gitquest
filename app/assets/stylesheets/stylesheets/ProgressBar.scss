@@ -6,9 +6,9 @@
   > span {
     background: color($color-name);
     border-radius: $block-radius;
-    box-shadow: 0em $block-depth color($color-name, dark);
+    //box-shadow: 0em $block-depth color($color-name, dark);
     position: relative;
-    bottom: $block-depth;
+    //bottom: $block-depth;
     display: block;
     height: 100%;
   }

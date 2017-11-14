@@ -9,6 +9,8 @@
   font-size: 1.1em;
   font-weight: bold;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .repo-description {

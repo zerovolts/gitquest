@@ -10,7 +10,7 @@ Achievement.create(
   name: "Hello World!",
   slug: "hello-world",
   description: "Create an account on GitQuest.io",
-  value: 5)
+  value: 10)
 
 Achievement.create(
   name: "First Repo!",

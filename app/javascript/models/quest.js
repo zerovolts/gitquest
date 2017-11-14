@@ -7,11 +7,11 @@ class Quest {
   @observable login = null
 
   @computed get active() {
-    return this.owned.filter(quest => quest.state == false)
+    return this.owned.filter(quest => quest.is_complete == false)
   }
 
   @computed get completed() {
-    return this.owned.filter(quest => quest.state == true)
+    return this.owned.filter(quest => quest.is_complete == true)
   }
 
   acceptQuest(id) {

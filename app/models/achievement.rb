@@ -42,7 +42,7 @@ class Achievement < ApplicationRecord
   end
 
   def recalculate_owners
-    owner_count = AchievementOwnership.where(achievement_id: self.id).length
-    self.update(owner_count: owner_count)
+    new_owner_count = AchievementOwnership.where(achievement_id: self.id).length
+    self.update(owner_count: new_owner_count)
   end
 end

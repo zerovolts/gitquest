@@ -7,7 +7,6 @@ class Quest < ApplicationRecord
   validates :body, presence: true, length: {minimum: 20}
   validates :github_id, presence: true
   validates :github_url, presence: true
-  validates :is_complete, presence: true
   validates :reward, numericality: {
     only_integer: true,
     greater_than_or_equal_to: 0
@@ -39,7 +38,7 @@ class Quest < ApplicationRecord
       title: quest_data[:title],
       github_id: data["id"],
       github_url: data["url"],
-      state: false,
+      is_complete: false,
       body: quest_data[:body],
       reward: quest_data[:reward],
       repository_id: quest_data[:repository_id]
