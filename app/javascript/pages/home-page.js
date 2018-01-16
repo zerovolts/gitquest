@@ -1,5 +1,6 @@
 import React from "react"
 import {observer, inject} from "mobx-react"
+import {Link} from "react-router-dom"
 
 const HomePage = inject("store")(observer((props) => {
   const currentUser = store.auth.currentUser
@@ -19,6 +20,7 @@ const HomePage = inject("store")(observer((props) => {
       <div className="content">
         <h1>Welcome to GitQuest!</h1>
         <p>You can search your friends' profile pages with the search bar at the top.</p>
+        <Link className="zlink" to="/zerovolts">gitquest.io/zerovolts</Link>
 
         <div className="grid-x">
           <button onClick={() => window.location.replace("/auth/github")} className="small-4 small-offset-4 cell">Sign In with GitHub</button>
